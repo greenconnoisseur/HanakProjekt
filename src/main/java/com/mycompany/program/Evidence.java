@@ -7,6 +7,8 @@ package com.mycompany.program;
  */
 import java.util.LinkedList;
 import java.util.Scanner;
+import java.util.Date;
+import java.text.SimpleDateFormat;
 
 /**
  *
@@ -17,6 +19,19 @@ public class Evidence {
     private LinkedList<Zaznam> zaznamy = new LinkedList<>();
     private Zaznam aktualniZaznam;
     private Scanner scanner = new Scanner(System.in,"windows-1250");
+   /* 
+    // Zobrazení data a času
+    public static String getCasADatum() {
+        // Získání aktuálního času a data
+        Date dnes = new Date();
+
+        // Formátování data a času
+        SimpleDateFormat casFormat = new SimpleDateFormat("HH:mm:ss");
+        SimpleDateFormat datumFormat = new SimpleDateFormat("dd.MM.yyyy");
+
+        // Vrácení aktuálního času a data jako string
+        return "Čas: " + casFormat.format(dnes) + "\nDatum: " + datumFormat.format(dnes);
+    } */
 //hlavní metoda programu
     public void Program() {
 
@@ -32,7 +47,7 @@ public class Evidence {
                 }
             }
 
-            System.out.print("Zadejte vaši volbu žádosti: \n");
+            System.out.print("Zadejte volbu: \n");
             System.out.println(spacer);
             volba = scanner.nextLine();
 
@@ -49,7 +64,7 @@ public class Evidence {
                     if (zaznamy.size() != 0) {
                         getPojistenec();
                     } else {
-                        System.out.println("\n Pojištěnec nenalezen \n");
+                        System.out.println("\n Pojištěnec nebyl nalezen \n");
                     }
                     break;
 
@@ -68,15 +83,18 @@ String spacer = "______________________________________________________________"
     }
 
     void getMenu() {
+       // String casADatum = getCasADatum();
         System.out.println(spacer);
-        String vitac = "Dobrý den! Vítejte v elektronické evidenci pojištěných!";
-        System.out.println(vitac);
+        System.out.println("Dobrý den! Vítejte v elektronické evidenci pojitěných!");
+         System.out.println(spacer);
+         
+        //System.out.println(casADatum);
         System.out.println(spacer);
     
         System.out.println("Jaká je vaše žádost?");
         System.out.println(spacer);
-        System.out.println("1 - Přidat nového pojištěnce");
-        System.out.println("2 - Vypsat všechny pojištěnce");
+        System.out.println("1 - Přidat pojištěnce");
+        System.out.println("2 - Vypsat pojištěnce");
         System.out.println("3 - Vyhledat pojištěnce");
         System.out.println("4 - Konec programu");
         getPocetPojistenec();
