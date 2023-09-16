@@ -47,10 +47,10 @@ public class Evidence {
                 }
             }
 
-            System.out.print("Zadejte volbu: \n");
-            System.out.println(spacer);
+            System.out.print("Zadejte volbu: ");
+            
             volba = scanner.nextLine();
-
+   System.out.println(spacer);
             switch (volba) {
                 case "1":
                     setNovyPojistenec(); //přidá nového pojištěnce
@@ -69,15 +69,15 @@ public class Evidence {
                     break;
 
                 case "4":
-                    System.out.println(" Konec ");
+                    System.out.println("Program byl ukončen.");
                     break;
             }
         }
 
     }
-String spacer = "______________________________________________________________";
+final String spacer = "______________________________________________________________";
+final String divider = "||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||";
     void getPocetPojistenec() {
-        System.out.println(spacer);
         System.out.println("Počet pojištěnců: " + zaznamy.size());
         System.out.println(spacer);
     }
@@ -85,11 +85,11 @@ String spacer = "______________________________________________________________"
     void getMenu() {
        // String casADatum = getCasADatum();
         System.out.println(spacer);
-        System.out.println("Dobrý den! Vítejte v elektronické evidenci pojitěných!");
+        System.out.println("Dobrý den! Vítejte v elektronické evidenci pojištěných!");
          System.out.println(spacer);
          
         //System.out.println(casADatum);
-        System.out.println(spacer);
+      
     
         System.out.println("Jaká je vaše žádost?");
         System.out.println(spacer);
@@ -101,12 +101,21 @@ String spacer = "______________________________________________________________"
     }
 //vytvoří nový záznam pojištěnce
     void setNovyPojistenec() {
-       System.out.println(spacer);
-        System.out.println("Zadejte jméno:");
+       System.out.println(divider);
+        System.out.println("Zadejte jméno: ");
         String jmeno = scanner.nextLine();
 
         System.out.println("Zadejte příjmení:");
         String prijmeni = scanner.nextLine();
+        System.out.println("Zadejte věk:");
+     int vek;
+do {
+    vek = Integer.parseInt(scanner.nextLine());
+    if (vek < 0 || vek > 120) {
+        System.out.println("Neplatný věk!");
+        System.out.println("Zadejte znovu.");
+    }
+} while (vek < 0 || vek > 120);
 System.out.println("Zadejte telefonní číslo bez předvolby:");
       int telCislo;
 do {
@@ -117,54 +126,46 @@ do {
         System.out.println("Zadejte znovu.");
     }
 } while (String.valueOf(telCislo).length() != 9);
-        System.out.println("Zadejte věk: ");
+       
         
-     int vek;
-do {
-    vek = Integer.parseInt(scanner.nextLine());
-    if (vek < 0 || vek > 120) {
-        System.out.println("Neplatný věk!");
-        System.out.println("Zadejte znovu");
-    }
-} while (vek < 0 || vek > 120);
         Zaznam zaznam = new Zaznam(jmeno, prijmeni, vek, telCislo);
         zaznamy.add(zaznam);
         //přidá záznam
         aktualniZaznam = zaznam;
 
-        System.out.println("Záznam byl vytvořen");
-       System.out.println(spacer);
+        System.out.println("Nový pojištěnec uložen");
+       System.out.println(divider);
     }
 
     void getVsechnyPojistenec() {
         getPocetPojistenec();
 
-        System.out.println(spacer);
-        System.out.println("V evidenci pojištěných máme:");
+        
+        System.out.println("V evidenci se nachází: ");
         for (int i = 0; i < zaznamy.size(); i++) {
             System.out.println(zaznamy.get(i).toString() + "\n");
 
         }
-        System.out.println("********************************************");
+        System.out.println(divider);
     }
 
     void getPojistenec() {
-        System.out.println("________________________________________________");
-        System.out.println("Zadejte jméno nebo příjmení pojištěného:");
-        String hledany = scanner.nextLine();
+    System.out.println("Zadejte jméno pojištěnce:");
+    String hledany = scanner.nextLine();
 
-        boolean nalezeno = false;
-        for (Zaznam zaznam : zaznamy) {
-            if (zaznam.jmeno.equalsIgnoreCase(hledany) || zaznam.prijmeni.equalsIgnoreCase(hledany)) {
-                System.out.println("Nalezen pojištěný: " + zaznam.toString());
-                nalezeno = true;
-            }
+    boolean nalezeno = false;
+    for (Zaznam zaznam : zaznamy) {
+        if (zaznam.jmeno.equalsIgnoreCase(hledany) || zaznam.prijmeni.equalsIgnoreCase(hledany) || (zaznam.jmeno + " " + zaznam.prijmeni).equalsIgnoreCase(hledany)) {
+            System.out.println("Nalezen pojištěný: " + zaznam.toString());
+            nalezeno = true;
         }
+    }
 
-        if (!nalezeno) {
-            System.out.println("Pojištěnec s tímto jménem nebo příjmením nebyl nalezen.");
-        }
+    if (!nalezeno) {
+        System.out.println("Pojištěnec nenalezen");
+    }
 
-        System.out.println(spacer);
+    System.out.println(spacer);
 }
+
 }
