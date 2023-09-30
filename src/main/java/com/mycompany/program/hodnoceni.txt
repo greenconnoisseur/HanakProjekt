@@ -1,0 +1,17 @@
+Ceníme práci na projektu! 🏆 Prohlédli jsme si kód a máme k němu následující poznámky:
+
+1. Pojmenování identifikátorů - Třída Zaznam by se mohla jmenovat lépe, například Pojisteny nebo Osoba, což by lépe odráželo její význam. Metoda Program ve třídě Evidence by měla mít malé počáteční písmeno. Metody ve třídě Evidence
+                                začínají slovem "get" a "set", přitom se ovšem nejedná o gettery a settery, což porušuje jmenovací konvence.
+2. Dodržení principů SRP a SoC - Kód nesplňuje principy SPR a SoC a do velké míry ani základní principy OOP. Třída Evidence má na starosti jak správu dat, tak uživatelský vstup a výstup. 
+3. Vhodný výběr datových typů - Telefonní číslo by nemělo být typu int.
+4. Formátování kódu - Kód je v mnoha případech špatně odsazen, mezery jsou nekonzistentní, kód je velmi špatně čitelný.
+5. Duplicitní kód a nekonečné cykly - ok
+6. Validace vstupních dat - Validace je sice dostupná, ovšem je nesmyslná. Kontrola, jestli je věk mezi 0 a 120 se na ničem nezakládá, jedná se o takzvaně "magic number". Pokud by uživatel zadal nečíselnou hodnotu, program spadne.
+7. Logičnost a složitost - Proměnná aktualniZaznam ve třídě Evidence není používána pro žádný zřetelný účel a samotný začátek metody Program a try-catch blok nedává smysl.
+                           Ve třídě Zaznam chybí gettery, k vlastnostem se přistupuje přímo, což ignoruje princip zapouzdření. Použití LinkedListu je neodůvodněné.
+8. Komentáře - V kódu je přítomno pár komentářů, ovšem pouze v jedné třídě a ještě ne na všech místech.
+9. Celkové hodnocení - Třída Evidence se stará jak o uživatelský vstup/výstup, tak o práci s daty, což porušuje principy SRP a SoC a když přičteme špatné formátování kódu, tak je hodně špatně čitelná. Identifikátory jsou pojmenovány příliš obecně
+                       a metody v třídě Evidence jsou pojmenovány z většiny špatně. Nějaká validace sice dostupná je, ovšem kontrolování, jestli má telefonní číslo délku devět či jestli je věk v intervalu 0-120 nedává smysl. Telefonní číslo by mělo
+                       být definované jako String, jeho definování jako číslo je chybné. Komentáře do velké míry chybí. Doporučuji kód upravit.
+
+Doporučujeme případné výtky v kódu opravit, abyste jej mohli pak prezentovat budoucímu zaměstnavateli v co nejlepší kvalitě. Pokud byste potřebovali s čímkoli pomoci, naplánujte si s námi konzultaci, rádi vám poradíme!
